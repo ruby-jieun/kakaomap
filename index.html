@@ -74,13 +74,31 @@
                             map.setCenter(coords);
                             // 마커를 결과값으로 받은 위치로 옮긴다.
                             marker.setPosition(coords)
+                            // 지도의 현재 중심좌표를 얻어옵니다 
                             var center = map.getCenter(); 
+                            // 좌표를 안내해준다
                             var message = '지도 중심좌표는 위도 ' + center.getLat() + ', <br>';
+                                // 지도 영역정보를 얻어옵니다 
+    var bounds = map.getBounds();
+    
+    // 영역정보의 남서쪽 정보를 얻어옵니다 
+    var swLatlng = bounds.getSouthWest();
+    
+    // 영역정보의 북동쪽 정보를 얻어옵니다 
+    var neLatlng = bounds.getNorthEast();
+    
+    var message = '<p>영역좌표는 남서쪽 위도, 경도는  ' + swLatlng.toString() + '이고 <br>'; 
+    message += '북동쪽 위도, 경도는  ' + neLatlng.toString() + '입니다 </p>'; 
+    
+    var resultDiv = document.getElementById('result');   
+    resultDiv.innerHTML = message;
                         }
                     });
                 }
             }).open();
         }
+
+
         
     </script>
 </body>

@@ -66,6 +66,7 @@
     
                             // 해당 주소에 대한 좌표를 받아서
                             var coords = new daum.maps.LatLng(result.y, result.x);
+                            
                             // 지도를 보여준다.
                             mapContainer.style.display = "block";
                             map.relayout();
@@ -73,6 +74,8 @@
                             map.setCenter(coords);
                             // 마커를 결과값으로 받은 위치로 옮긴다.
                             marker.setPosition(coords)
+                            var center = map.getCenter(); 
+                            var message = '지도 중심좌표는 위도 ' + center.getLat() + ', <br>';
                         }
                     });
                 }

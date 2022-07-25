@@ -2,48 +2,23 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>주소로 장소 표시하기</title>
+    <title>이미지 지도 생성하기</title>
     
 </head>
-<body><div class="row border-top p-3" style="margin-left: 350px; margin-right:50px;">
-	<div class="col-2"><h5><strong>주소 <span style="color:red;">*</span></strong></h5></div>
-	<div class="col-auto">
-		<input type="hidden" name="place">
-		<input type="text" size="40" name="address" id="address" class="essential">
-		<input type="hidden" name="lat">
-		<input type="hidden" name="lng">
-		<a type="button" id="reset" class="btn btn-outline-dark">초기화</a>
-	</div>
-</div>
-    </script>
-<div id="map" style="width:100%;height:350px;"></div>
-<p><em>지도를 클릭해주세요!</em></p> 
-<div id="clickLatlng"></div>
+<body>
+<!-- 이미지 지도를 표시할 div 입니다 -->
+<div id="staticMap" style="width:600px;height:350px;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=21a7ba744f3272669c16d2da02f69015"></script>
 <script>
-var geocoder = new kakao.maps.services.Geocoder();
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+    staticMapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 이미지 지도의 중심좌표
+        level: 3 // 이미지 지도의 확대 레벨
+    };
 
-$("#address").click(function(){
-    new daum.Postcode({
-        oncomplete: function(data) {
-            $("#address").val(data.address);
-            $("#address").prop("readonly",true);
-            $("input[name=place]").val(data.sido);
-            var juso =  $("#address").val();
-        	geocoder.addressSearch(juso, callback);  
-        }
-    }).open()
-});
-
-var callback = function(result, status) {
-	if (status === kakao.maps.services.Status.OK) {
-		$("input[name=lng]").val(result[0].x);
-		$("input[name=lat]").val(result[0].y);
-	}
-};
-    
-});
+// 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
+var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 </script>
 </body>
 </html>

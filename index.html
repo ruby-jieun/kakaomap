@@ -48,7 +48,19 @@
             position: new daum.maps.LatLng(37.537187, 127.005476),
             map: map
         });
-    
+        kakao.maps.event.addListener(map, 'center_changed', function() {
+
+// 지도의  레벨을 얻어옵니다
+var level = map.getLevel();
+
+// 지도의 중심좌표를 얻어옵니다 
+var latlng = map.getCenter(); 
+
+var message = '<p>지도 레벨은 ' + level + ' 이고</p>';
+message += '<p>중심 좌표는 위도 ' + latlng.getLat() + ', 경도 ' + latlng.getLng() + '입니다</p>';
+
+var resultDiv = document.getElementById('result');
+resultDiv.innerHTML = message;
     
         function sample5_execDaumPostcode() {
             new daum.Postcode({

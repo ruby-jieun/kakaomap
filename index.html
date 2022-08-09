@@ -20,11 +20,18 @@
         }
         
         </script>
-        거래처코드 : <input type='text' id='a' style='width:200px;height:20px;' placeholder='텍스트 입력' />
+        <div class="form-group row">
+            <label class="col-form-label col-md-3 col-sm-3 label-align">
+				거래처 코드 <span class="required">*</span>
+            </label>
+            <input type='text' id='custcode' style='custcode'
+                   class="form-control"
+                   placeholder='거래처 코드' />
+					<button type="submit" class="btn btn-primary" id = "addItemBuy" >검색</button>
+				</div>
+		</div>
 
-        <input type='button' value='클릭' onclick='work()'/>
-
-        <br>
+    <br>
 
     <input type="text" id="sample5_address" placeholder="주소">
     <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
